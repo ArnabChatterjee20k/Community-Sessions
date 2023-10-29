@@ -9,10 +9,26 @@
 <body>
     <h1>Create Your blog</h1>
     <div id="create-blog">
-        <input type="text" placeholder="enter the title of the blog">
-        <textarea name="" id="" cols="30" rows="10">
+        <input id="title" type="text" placeholder="enter the title of the blog">
+        <textarea id="content" id="" cols="30" rows="10">
         </textarea>
-        <button>Create blog</button>
+        <button id="btn">Create blog</button>
     </div>
 </body>
+
+<script>
+    let title = document.querySelector("#title")
+    let content = document.querySelector("#content")
+    let btn = document.querySelector("#btn")
+
+    // grabbing the content
+    btn.addEventListener("click",function(){
+        // store
+        let data = [title.value,content.value]
+        localStorage.setItem("blogs",data)
+        console.log(localStorage.getItem("blogs"))
+    })
+
+</script>
+
 </html>
