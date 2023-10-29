@@ -23,10 +23,16 @@
 
     // grabbing the content
     btn.addEventListener("click",function(){
+        // grabbing the previous data 
+        // deserilisation as current data will text but we need array
+        let prevData = localStorage.getItem("blogs")
+        let serialisedData = JSON.parse(prevData)
         // store
-        let data = [title.value,content.value]
-        localStorage.setItem("blogs",data)
-        console.log(localStorage.getItem("blogs"))
+        let curTitle = title.value
+        let curContent = content.value
+        let data = [curTitle,curContent]
+        serialisedData.push(data)
+        localStorage.setItem("blogs",JSON.stringify(serialisedData))
     })
 
 </script>
