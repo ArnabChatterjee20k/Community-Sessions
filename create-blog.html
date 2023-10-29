@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Create Your blog</h1>
     <div id="create-blog">
-        <input id="title" type="text" placeholder="enter the title of the blog">
-        <textarea id="content" id="" cols="30" rows="10">
-        </textarea>
-        <button id="btn">Create blog</button>
+      <input id="title" type="text" placeholder="enter the title of the blog" />
+      <textarea id="content" id="" cols="30" rows="10"> </textarea>
+      <button id="btn">Create blog</button>
     </div>
-</body>
+  </body>
 
-<script>
-    let title = document.querySelector("#title")
-    let content = document.querySelector("#content")
-    let btn = document.querySelector("#btn")
+  <script>
+    let title = document.querySelector("#title");
+    let content = document.querySelector("#content");
+    let btn = document.querySelector("#btn");
 
     // grabbing the content
-    btn.addEventListener("click",function(){
-        // grabbing the previous data 
-        // deserilisation as current data will text but we need array
-        let prevData = localStorage.getItem("blogs")
-        let serialisedData = JSON.parse(prevData)
-        // store
-        let curTitle = title.value
-        let curContent = content.value
-        let data = [curTitle,curContent]
-        serialisedData.push(data)
-        localStorage.setItem("blogs",JSON.stringify(serialisedData))
-    })
+    btn.addEventListener("click", function () {
+      // Grabbing the previous data
+      // Deserialization as current data will be text but we need an array
+      let prevData = localStorage.getItem("blogs");
+      let serialisedData = JSON.parse(prevData);
 
-</script>
+      // Store
+      let curTitle = title.value;
+      let curContent = content.value;
+      let data = [curTitle, curContent];
 
+      if (serialisedData !== null) {
+        // Append to the existing data
+        serialisedData.push(data);
+        localStorage.setItem("blogs", JSON.stringify(serialisedData));
+      } else {
+        // Initialize an empty array and add the data
+        serialisedData = [data];
+        localStorage.setItem("blogs", JSON.stringify(serialisedData));
+      }
+    });
+  </script>
 </html>

@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <H1>Welcome to Arnab's Blog</H1>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Welcome to Arnab's Blog</h1>
     <div>
-        <a href="">Blogs</a>
-        <a href="/create-blog.html">Create</a>
+      <a href="">Blogs</a>
+      <a href="/create-blog.html">Create</a>
+      <div id="blogs">
+        <!-- blogs -->
+      </div>
     </div>
-</body>
+  </body>
+  <script>
+    const storage = localStorage.getItem("blogs"); // string
+    const deserialisedStorage = JSON.parse(storage); // array
+    const blogs = document.getElementById("blogs");
+    // blogs.innerHTML = deserialisedStorage
+    for (let index = 0; index < deserialisedStorage.length; index++) {
+      const blog = deserialisedStorage[index];
+      const title = blog[0];
+
+      blogs.innerHTML += "<h1>" + '<a href="">' + title;
+      "</a>" + "</h1>";
+    }
+  </script>
 </html>

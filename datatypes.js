@@ -12,4 +12,5 @@ int = 12.5
 // arrays
 let nums = [1,2,3,4]
 // first element of nums
-console.log(nums[1])
+let blogs = ["title","content"]
+console.log(blogs[0],blogs[1])
